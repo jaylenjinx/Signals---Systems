@@ -1,3 +1,12 @@
+%{
+****************************************************************************
+* Copyright         : 2024 Jaylen Avtarovski
+* File Name         : Q2.m
+* Description       : This file contains the code for Question 2 in Tute 1
+*
+****************************************************************************
+%}
+
 % define t (1000 points between 0 & 2
 t = -5:0.001:5;
 

@@ -1,3 +1,12 @@
+%{
+****************************************************************************
+* Copyright         : 2024 Jaylen Avtarovski
+* File Name         : Q3b.m
+* Description       : This file contains the code for Question 3b in Tute 1
+*
+****************************************************************************
+%}
+
 dt = 0.01;
 tmin = -4;
 tmax = 4;

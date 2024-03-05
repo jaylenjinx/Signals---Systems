@@ -1,3 +1,12 @@
+%{
+****************************************************************************
+* Copyright         : 2024 Jaylen Avtarovski
+* File Name         : Q3a.m
+* Description       : This file contains the code for Question 3a in Tute 1
+*
+****************************************************************************
+%}
+
 dt = 0.01;
 t1 = 0:dt:pi;
 t2 = 0:dt:pi;

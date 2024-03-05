@@ -1,3 +1,12 @@
+%{
+****************************************************************************
+* Copyright         : 2024 Jaylen Avtarovski
+* File Name         : Q1b.m
+* Description       : This file contains the code for Question 1b in Tute 1
+*
+****************************************************************************
+%}
+
 % define t (1000 points between 0 & 2
 t = 0:0.001:2;
 
