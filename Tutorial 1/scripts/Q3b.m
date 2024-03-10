@@ -26,7 +26,7 @@ z = conv(x,y) * dt;
 
 % x over t
 subplot(3, 1, 1);
-plot(t1, x); 
+plot(t1, x);
 grid on;
 xlabel('t');
 ylabel('x');
@@ -35,7 +35,7 @@ axis([-4 4 -1 5]);
 
 % y over t
 subplot(3, 1, 2);
-plot(t2, y); 
+plot(t2, y);
 grid on;
 xlabel('t');
 ylabel('y');
@@ -44,7 +44,7 @@ axis([-4 4 -1 5]);
 
 % z over t
 subplot(3,1,3);
-plot(t, z); 
+plot(t, z);
 grid on;
 xlabel('t');
 ylabel('z');
