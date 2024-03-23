@@ -1,54 +1,65 @@
 %{
 ****************************************************************************
 * Copyright         : 2024 Jaylen Avtarovski
-* File Name         : Q2.m
-* Description       : This file contains the code for Question 2 in Tute 1
+* File Name         : Q3.m
+* Description       : This file contains the code for Question 3 in Tute 3
 *
 ****************************************************************************
 %}
 
-% define t (1000 points between 0 & 2
-t = -5:0.001:5;
+% Config
+fs = 100; % Sampling Frequency
+n = 1000; % Number of sampling points
 
-% define x in terms of t, t+2, 2t & 1-2t for each section
-x1 = (1 + (t/2)) .* (heaviside(t+1) - heaviside(t-1));
-x2 = (1 + ((t+2)/2)) .* (heaviside((t+2)+1) - heaviside((t+2)-1));
-x3 = (1 + (2*t/2)) .* (heaviside(2*t+1) - heaviside(2*t-1));
-x4 = (1 + ((1-(2*t))/2)) .* (heaviside((1-(2*t))+1) - heaviside((1-(2*t))-1));
+% Time Domain Setup
+t = (0:n-1) / fs; % Time-Domain Vector
+fshift = (-n/2:n/2-1)*(fs/n); % zero-centered frequency range
 
-% plot the functions
-% x(t)
-subplot(4, 1, 1);
-plot(t, x1);
+% Calculate Functions
+x = cos(4 * pi * t);
+y = exp(1i * pi * t) .* x;
+
+% Perform FFT
+X = fftshift(fft(x) / n);
+Y = fftshift(fft(y) / n);
+
+% Calculate Magnitude Spectra
+powerX = abs(X).^2;
+powerY = abs(Y).^2;
+
+% Plot Results
+figure;
+
+% Plot x(t)
+subplot(2, 2, 1);
+plot(t, x);
+title('Function x(t) = cos(4\pi t)');
+xlabel('Time (s)');
+ylabel('Amplitude');
 grid on;
-xlabel('t');
-ylabel('x(t)');
-title('Plot of x(t)');
-axis([-5 5 0 2]);
 
-% x(t + 2)
-subplot(4, 1, 2);
-plot(t, x2); 
+% Plot Magnitude Spectrum of x(t)
+subplot(2, 2, 2);
+plot(fshift, powerX);
+xlim([0, 4]);
+title('Magnitude Spectrum of x(t)');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
 grid on;
-xlabel('t');
-ylabel('x(t + 2)');
-title('Plot of x(t + 2)');
-axis([-5 5 0 2]);
 
-% x(2t)
-subplot(4, 1, 3);
-plot(t, x3); 
+% Plot y(t)
+subplot(2, 2, 3);
+plot(t, real(y));
+title('Function y(t) = e^{j\pi t} \cdot x(t)');
+xlabel('Time (s)');
+ylabel('Amplitude');
 grid on;
-xlabel('t');
-ylabel('x(2t)');
-title('Plot of x(2t)');
-axis([-5 5 0 2]);
 
-% x(1 - 2t)
-subplot(4, 1, 4);
-plot(t, x4); 
+% Plot Magnitude Spectrum of y(t)
+subplot(2, 2, 4);
+plot(fshift, powerY);
+xlim([0, 4]);
+title('Magnitude Spectrum of y(t)');
+xlabel('Frequency (Hz)');
+ylabel('Magnitude');
 grid on;
-xlabel('t');
-ylabel('x(1 - 2t)');
-title('Plot of x(1 - 2t)');
-axis([-5 5 0 2]);
